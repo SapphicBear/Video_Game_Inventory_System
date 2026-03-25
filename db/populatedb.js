@@ -7,7 +7,8 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS games (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR (255),
-    
+    release_date DATE,
+    creator VARCHAR (255)
 );
 `;
 
