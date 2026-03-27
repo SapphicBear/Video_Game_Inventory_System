@@ -23,6 +23,23 @@ CREATE TABLE IF NOT EXISTS games (
     genre VARCHAR(255),
     release_year INTERVAL YEAR NOT NULL
 );
+INSERT INTO game_consoles (name, company, release_year)
+    VALUES ('Xbox 360', 'Microsoft', '2005');
+INSERT INTO game_consoles (name, company, release_year)
+    VALUES ('PlayStation 2', 'Sony', '2000');
+INSERT INTO game_consoles (name, company, release_year)
+    VALUES ('PlayStation', 'Sony', '1994');
+INSERT INTO game_consoles (name, company, release_year)
+    VALUES ('PlayStation 3', 'Sony', '2006');
+INSERT INTO game_consoles (name, company, release_year)
+    VALUES ('PC', 'Multiple Companies', '1979');
+
+INSERT INTO game_studios (name, year)
+    VALUES ('Valve', '1996');
+INSERT INTO game_studios (name, year)
+    VALUES ('Obsidian Entertainment', '2003');
+INSERT INTO game_studios (name, year)
+    VALUES ('Black Isle Studios', '1996');
 `;
 
 async function main(arg) {
@@ -33,7 +50,7 @@ async function main(arg) {
     await client.connect();
     await client.query(SQL);
     await client.end();
-    console.log("done!")
+    console.log("done!");
 }
 
 main(argv[2]);
