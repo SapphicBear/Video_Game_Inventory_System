@@ -25,7 +25,9 @@
                 <% }); %>
             </ul>
         </main>
-
+        <aside class="sidebar">
+            <%- include("./partials/sidebar.ejs", { genres: genres, consoles: consoles }) %>
+        </aside>
     <footer>
         <%- include("./partials/footer.ejs", { links: links }); %>
     </footer>

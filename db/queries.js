@@ -14,11 +14,16 @@ async function getAllGames() {
 }
 
 async function getAllConsoles() {
-    const { rows } = await pool.query("SELECT name, company, release_year FROM game_consoles;");
+    const { rows } = await pool.query("SELECT name FROM game_consoles;");
     return rows;
 }
 async function getAllStudios() {
     const { rows } = await pool.query("SELECT name, year FROM game_studios;");
+    return rows;
+}
+
+async function getAllGenres() {
+    const { rows } = await pool.query("SELECT genre FROM games;");
     return rows;
 }
 
@@ -32,4 +37,5 @@ module.exports = {
     getAllGames,
     getAllConsoles,
     getAllStudios,
+    getAllGenres,
 };

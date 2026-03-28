@@ -5,7 +5,7 @@
         <select name="genres" id="genre-select">
             <option value="">--Please choose an option--</option>
             <% genres.map((genre) => { %>
-                <option value="<%= genre %>"><%= genre %></option>
+                <option value="<%= genre.genre %>"><%= genre.genre %></option>
             <% }); %>
         </select>
         <button type="submit">Search</button>
@@ -16,7 +16,7 @@
     <h2>Filter by Console</h2>
     <!-- accordian elements? -->
     <ul class="consoles-list">
-        <%= consoles.map((console) => { %>
+        <% consoles.map((console) => { %>
             <li><%= console.name %></li>
         <% }); %>
     </ul>
