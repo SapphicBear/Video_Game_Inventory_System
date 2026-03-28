@@ -14,7 +14,7 @@ async function getAllGames() {
 }
 
 async function getAllConsoles() {
-    const { rows } = await pool.query("SELECT name FROM game_consoles;");
+    const { rows } = await pool.query("SELECT name FROM game_consoles WHERE name != 'PC, Xbox 360, PlayStation 3' ORDER BY name;");
     return rows;
 }
 async function getAllStudios() {

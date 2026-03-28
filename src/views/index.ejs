@@ -4,6 +4,7 @@
     <%- include("./partials/head.ejs"); %>
 </head>
 <body>
+    <div class="wrapper">
     <header>
         <%- include("./partials/header.ejs"); %>
     </header>
@@ -13,13 +14,13 @@
                     <li> 
                         <div class="gameContainer">
                             <h2>Game <%= i + 1 %></h2>
-                            <p><%= game.game_name %></p>
-                            <p><%= game.studio_name %></p>
-                            <p><%= game.genre %></p>
-                            <p><%= game.release_year %></p>
-                            <p><%= game.console %></p>
-                            <p><%= game.price %></p>
-                            <p><%= game.in_stock %></p>
+                            <p>Title: <%= game.game_name %></p>
+                            <p>Game Studio: <%= game.studio_name %></p>
+                            <p>Genre: <%= game.genre %></p>
+                            <p>Release Year: <%= game.release_year %></p>
+                            <p>On: <%= game.console %></p>
+                            <p>Price: <%= game.price %></p>
+                            <p>In stock: <%= game.in_stock %></p>
                         </div>
                     </li>
                 <% }); %>
@@ -31,5 +32,6 @@
     <footer>
         <%- include("./partials/footer.ejs", { links: links }); %>
     </footer>
+    </div>
 </body>
 </html>
