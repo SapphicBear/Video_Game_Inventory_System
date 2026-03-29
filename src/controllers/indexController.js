@@ -7,7 +7,14 @@ async function indexGet(req, res) {
     const consoles = await db.getAllConsoles();
     res.render("index", { games: games, links: links, genres: genres, consoles: consoles });
 }
+async function filterByConsole(req, res) {
+    const games = await db.filterByConsole(req.url)
+    const genres = await db.getAllGenres();
+    const consoles = await db.getAllConsoles();
+    res.render("index", { games: games, links: links, genres: genres, consoles: consoles })
+}
 
 module.exports = {
     indexGet,
+    filterByConsole
 };

@@ -7,7 +7,7 @@
                 <p>Studio: <%= game.studio_name %></p>
                 <p>Genre: <%= game.genre %></p>
                 <p>Released: <%= game.release_year %></p>
-                <p>Available on: <%= game.console %></p>
+                <p>Available on: <%= game.console.toString().replaceAll(",", ", ").replaceAll("_", " "); %></p>
                 </div>
             </div>
             <div class="<%= game.in_stock !== 0 ? "available" : "not-available" %>">

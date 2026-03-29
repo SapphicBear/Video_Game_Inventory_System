@@ -17,7 +17,8 @@
     <!-- accordian elements? -->
     <ul class="consoles-list">
         <% consoles.map((console) => { %>
-            <li><%= console.name %></li>
+            <li><a href="/<%= console.name %>"><%= console.name.replace("_", " "); %></a></li>
         <% }); %>
+        <li><a href="/">Reset</a></li>
     </ul>
 </div>

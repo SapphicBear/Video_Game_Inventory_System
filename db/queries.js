@@ -3,9 +3,7 @@ const pool = require("./pool");
 // get all items
 async function getAllGames() {
     const query = `
-    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, game_consoles.name AS console, games.id FROM games
-        JOIN game_consoles 
-        ON (games.console_id = game_consoles.console_id)
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console, games.id FROM games
         JOIN game_studios
         ON (games.studio_id = game_studios.studio_id)
     ORDER BY games.id;
@@ -15,7 +13,7 @@ async function getAllGames() {
 }
 
 async function getAllConsoles() {
-    const { rows } = await pool.query("SELECT name FROM game_consoles WHERE name != 'PC, Xbox 360, PlayStation 3' ORDER BY name;");
+    const { rows } = await pool.query("SELECT name, console_id FROM game_consoles ORDER BY name;");
     return rows;
 }
 async function getAllStudios() {
@@ -25,6 +23,21 @@ async function getAllStudios() {
 
 async function getAllGenres() {
     const { rows } = await pool.query("SELECT genre FROM games;");
+    return rows;
+}
+
+async function filterByConsole(consoleName) {
+    let name = consoleName.slice(1);
+    console.log(name)
+    const query = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE '${name}' = ANY(games.console)
+    ORDER BY games.id;
+    `
+    const { rows } = await pool.query(query);
+    console.log(rows);
     return rows;
 }
 
@@ -39,4 +52,5 @@ module.exports = {
     getAllConsoles,
     getAllStudios,
     getAllGenres,
+    filterByConsole
 };
