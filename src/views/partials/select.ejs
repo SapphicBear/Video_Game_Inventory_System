@@ -8,9 +8,13 @@
             <% }); %>
         </select>
     </div>
-    <input type="checkbox" id="inStock-genres" name="inStock" value="In Stock">
-    <label for="inStock-genres">Only show In Stock</label>
-    <button type="submit">Search</button>
+        <span class="submit-area">
+            <span><input type="checkbox" id="inStock-genres" name="inStock" value="In Stock">
+            <label for="inStock-genres">Only show In Stock</label>
+            </span>
+            <button type="submit">Search</button>
+        </span>
+    
 </form>
 <form action="/consoles" method="GET">
     <div class="form-row">
@@ -22,7 +26,12 @@
             <% }); %>
         </select>
     </div>
-    <input type="checkbox" id="inStock-consoles" name="inStock" value="In Stock">
-    <label for="inStock-consoles">Only show In Stock</label>
-    <button type="submit">Search</button>
+    <span class="submit-area">
+        <span>
+        <input type="checkbox" id="inStock-consoles" name="inStock" value="In Stock">
+        <label for="inStock-consoles">Only show In Stock</label>
+        </span>
+        <button type="submit">Search</button>
+        
+    </span>
 </form>

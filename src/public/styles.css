@@ -59,6 +59,8 @@ li {
     --light-red: rgb(255, 216, 216);
     --highlight: rgb(255, 180, 93);
     --dark-highlight: rgb(197, 97, 39);
+    --secondary: rgb(150, 150, 255);
+    --dark-secondary: rgb(51, 51, 158);
 }
 .wrapper {
     margin-inline: auto;
@@ -89,6 +91,7 @@ main {
     border-bottom-left-radius: 14px;
     grid-area: main;
     background-color: var(--cool-grey);
+    border-bottom: solid 2px var(--border-grey);
     
 }
 .inventory-header {
@@ -200,13 +203,58 @@ main {
     border-top-right-radius: 14px;
     border-bottom-right-radius: 14px;
     grid-area: sidebar;
-    padding: 1rem;
-    max-width: fit-content;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background-color: var(--dark-grey);
     border-left: 2px solid var(--border-grey);
+    border-bottom: solid 2px var(--border-grey);
+}
+.filter-area > form, .filter-area > a {
+    padding: 0.5rem;
+    border-radius: 14px;
+    border: solid var(--border-grey) 2px;
+    background: var(--cool-grey);
+}
+.filter-area > form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.filter-area > a {
+    text-align: center;
+}
+.filter-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.filter-area > h2 {
+    background-color: var(--highlight);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border-bottom: 2px var(--dark-highlight) solid;
+    text-align: center;
+}
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.form-row > label {
+    font-weight: 600;
+    padding: 0.25rem;
+    border-radius: 8px;
+    background: var(--secondary);
+    border-bottom: solid 2px var(--dark-secondary);
+    text-align: center;
+}
+.submit-area {
+    padding: 0rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 footer {
     border-top-left-radius: 14px;

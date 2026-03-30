@@ -8,7 +8,6 @@ async function indexGet(req, res) {
     res.render("index", { games: games, links: links, genres: genres, consoles: consoles });
 }
 async function getFilterConsole(req, res) {
-    console.log(req.query, req.params)
     const games = await db.filterByConsole(req.query);
     const genres = await db.getAllGenres();
     const consoles = await db.getAllConsoles();
