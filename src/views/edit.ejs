@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("./partials/head.ejs", { title: title }); %>
+    <%- include("./partials/head.ejs"); %>
 </head>
 <body>
     <div class="wrapper">
@@ -10,23 +10,24 @@
         </header>
         <main>
             <form action="/edit" method="UPDATE">
+                <% game.map((data) => { %>
                 <div class="form-row">
                     <label for="title">Title: </label>
-                    <input type="text" name="title" id="title" value="<%= game.name %>">
+                    <input type="text" name="title" id="title" value="<%= data.game_name %>">
                 </div>
                 <div class="form-row">
                     <label for="genre">Genre: </label>
-                    <input type="text" name="genre" id="genre" value="<%= game.genre %>">
+                    <input type="text" name="genre" id="genre" value="<%= data.genre %>">
                 </div>
                 <div class="form-row">
                     <label for="studio">Game Studio: </label>
-                    <input type="text" name="studio" id="studio" value="<%= game.studio_name %>">
+                    <input type="text" name="studio" id="studio" value="<%= data.studio_name %>">
                 </div>
                 <div class="form-row">
                     <label for="release">Release year: </label>
-                    <input type="text" name="release" id="release" value="<%= game.release_year %>">
+                    <input type="text" name="release" id="release" value="<%= data.release_year %>">
                 </div>
-                
+                <% }); %>
             </form>
         </main>
         <footer>

@@ -75,6 +75,18 @@ async function filterByGenre(genre) {
     }
 }
 
+async function getSelectedGame(game) {
+    const query = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+    WHERE games.name = '${game.game_name}'
+    ORDER BY games.id;
+    `;
+    const { rows } = await pool.query(query);
+    return rows;
+}
+
 // get all items of one category
 
 // delete items (DELETE)
@@ -87,5 +99,6 @@ module.exports = {
     getAllStudios,
     getAllGenres,
     filterByConsole,
-    filterByGenre
+    filterByGenre,
+    getSelectedGame
 };
