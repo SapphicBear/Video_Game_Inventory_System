@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
-app.use("/edit/", editRouter);
+app.use("/edit", editRouter);
 
 app.listen(PORT, (error) => {
     if (error) {
