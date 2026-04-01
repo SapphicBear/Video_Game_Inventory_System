@@ -6,6 +6,11 @@ async function getEdit(req, res) {
     res.render("edit", { links: links, game: game });
 }
 
+async function updateEdit(req, res) {
+    
+    res.redirect("/");
+}
+
 module.exports = {
     getEdit
 };

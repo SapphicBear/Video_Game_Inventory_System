@@ -279,12 +279,20 @@ main.edit {
     background: var(--cool-grey);
     display: grid;
     gap: 1rem;
-    > .edit.form-row {
-        display: grid;
-        grid-template-columns: 20ch 30ch;
-        gap: 1rem;
+    > button {
+        background: var(--highlight);
+        border-radius: 8px;
+        font-weight: 600;
+        height: 2.25rem;
+        border: none;
+        border-bottom: 2px solid var(--dark-highlight);
     }
 }
+.edit.form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 250px);
+        gap: 1rem;
+    }
 footer {
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
@@ -301,4 +309,11 @@ footer {
 
 footer, header {
     background-color: var(--dark-grey);
+}
+
+fieldset {
+    display: grid;
+    gap: 1rem;
+    border: 2px solid var(--border-grey);
+    border-radius: 14px;
 }
