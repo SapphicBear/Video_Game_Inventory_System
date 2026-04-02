@@ -18,6 +18,10 @@
                     <input type="text" name="name" id="name" value="<%= data.game_name %>">
                 </div>
                 <div class="edit form-row">
+                    <label for="id">Product ID: </label>
+                    <input type="text" name="id" id="id" value="<%= data.id %>" inert>
+                </div>
+                <div class="edit form-row">
                     <label for="genre">Genre: </label>
                     <input type="text" name="genre" id="genre" value="<%= data.genre %>">
                 </div>
@@ -33,11 +37,10 @@
                 <fieldset>
                     <legend>Store information</legend>
                 <div class="edit form-row">
-                    <label for="consoles">Available on: </label>
+                    <label for="console">Available on: </label>
                     <div class="console-area">
                     <% data.console.map((con) => { %>
-                        <input type="text" id="<%= con %>" name="consoles" value="<%= con.replaceAll("_", " ") %>">
-                        <!-- <button type="button" class="delete-button">X</button> -->
+                        <input type="text" id="<%= con %>" name="console" value="<%= con %>">
                     <% }); %>
                     </div>
                     <!-- TODO: add multi select for consoles, can remove existing ones -->
@@ -56,6 +59,15 @@
                 <button type="button">Cancel</button>
             </form>
         </main>
+        <aside>
+            <ul>
+                <% if (errors) { %>
+            <% errors.map((error) => { %>
+                <li><%= error.msg %></li>
+            <% }); %>
+            <%}%>
+            </ul>
+        </aside>
         <footer>
             <%- include("./partials/footer.ejs", { links: links }); %>
         </footer>
