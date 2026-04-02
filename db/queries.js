@@ -87,6 +87,9 @@ async function getSelectedGame(game) {
     return rows;
 }
 
+async function updateGameInfo(info) {
+    
+}
 // get all items of one category
 
 // delete items (DELETE)
