@@ -5,7 +5,10 @@ const links = require("./links");
 
 async function getEdit(req, res) {
     const game = await db.getSelectedGame(req.params);
-    res.render("edit", { links: links, game: game, errors: "" });
+    let temp = game[0].console[0];
+    console.log(temp)
+    const consoles = await db.remainingConsoles(temp);
+    res.render("edit", { links: links, game: game, errors: "", consoles: consoles });
 }
 
 const updateEdit = [
@@ -53,6 +56,7 @@ const updateEdit = [
         .withMessage("Price must be set."),
 
     async (req, res, next) => {
+        const consoles = await db.remainingConsoles(req.body.console);
         const errors = validationResult(req);
         const game = {
             game_name: req.body.name,
@@ -70,6 +74,7 @@ const updateEdit = [
                     errors: errors.array(), 
                     links: links,
                     game: [game],
+                    consoles: consoles,
                 });
                 return;
         }

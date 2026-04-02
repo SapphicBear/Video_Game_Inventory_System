@@ -26,6 +26,18 @@ async function getAllGenres() {
     return rows;
 }
 
+async function remainingConsoles(consoleName) {
+    let consoles = consoleName;
+    console.log(consoles)
+    const query = `
+    SELECT name FROM game_consoles
+        WHERE name NOT IN (${consoles.map((con) => { return `'${con}'`})})
+    ORDER BY name;
+    `;
+    const { rows } = await pool.query(query);
+    return rows;
+}
+
 async function filterByConsole(consoleName) {
     const query = `
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
@@ -110,5 +122,6 @@ module.exports = {
     filterByConsole,
     filterByGenre,
     getSelectedGame,
-    updateGameInfo
+    updateGameInfo,
+    remainingConsoles
 };

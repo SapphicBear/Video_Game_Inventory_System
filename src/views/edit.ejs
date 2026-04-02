@@ -42,6 +42,12 @@
                     <% data.console.map((con) => { %>
                         <input type="text" id="<%= con %>" name="console" value="<%= con %>">
                     <% }); %>
+                    <select name="console" id="add-console">
+                        <option value="" selected disabled hidden>Add a new console?</option>
+                        <% consoles.map((console) => { %>
+                            <option value="<%= console.name %>"><%= console.name %></option>
+                        <% }); %>
+                    </select>
                     </div>
                     <!-- TODO: add multi select for consoles, can remove existing ones -->
                 </div>
