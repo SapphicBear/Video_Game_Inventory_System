@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs"); %>
+</head>
+<body>
+    <div class="wrapper new-console">
+        <header>
+            <%- include("./partials/header.ejs"); %>
+        </header>
+        <main class="new-console">
+            <form action="/new-console" method="POST" class="new-console-form">
+                <div class="new-console form-row">
+                    <label for="name">Console Name: </label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="new-console form-row">
+                    <label for="release_year">Release year: </label>
+                    <input type="tel" id="release_year" name="release_year" required>
+                </div>
+
+                <button type="submit">Submit</button>
+                <a class="button" href="/">Cancel</a>
+            </form>
+            <aside>
+                <ul>
+                    <% if (errors) { %>
+                <% errors.map((error) => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+                <%}%>
+                </ul>
+        </aside>
+        </main>
+        
+        <footer>
+            <%- include("./partials/footer.ejs", { links: links }); %>
+        </footer>
+    </div>
+</body>
+</html>

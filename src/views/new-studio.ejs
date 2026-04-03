@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs"); %>
+</head>
+<body>
+    <div class="wrapper new-console">
+        <header>
+            <%- include("./partials/header.ejs"); %>
+        </header>
+        <main class="new-studio">
+            <form action="/new-studio" method="POST" class="new-studio-form">
+                <div class="new-studio form-row">
+                    <label for="name">Studio Name: </label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="new-studio form-row">
+                    <label for="year">Grounding year: </label>
+                    <input type="tel" name="year" id="year" required>
+                </div>
+                <button type="submit">Submit</button>
+                <a class="button" href="/">Cancel</a>
+            </form>
+            <aside>
+                <ul>
+                    <% if (errors) { %>
+                <% errors.map((error) => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+                <%}%>
+                </ul>
+        </aside>
+        </main>
+        
+        <footer>
+            <%- include("./partials/footer.ejs", { links: links }); %>
+        </footer>
+    </div>
+</body>
+</html>

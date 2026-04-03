@@ -79,7 +79,7 @@ li {
         "footer footer footer footer";
     gap: 1rem 0rem;
 }
-.wrapper.edit, .wrapper.new {
+.wrapper.edit, .wrapper.new, .wrapper.new-console, .wrapper.new-studio {
     grid-template-areas: 
         "header header header header"
         "main main main main"
@@ -102,7 +102,7 @@ main {
     background-color: var(--cool-grey);
     border-bottom: solid 2px var(--border-grey);
 }
-main.edit, main.new {
+main.edit, main.new, main.new-console, main.new-studio {
     border-radius: 14px;
     background: var(--cool-grey);
     justify-items: center;
@@ -276,7 +276,7 @@ h2 {
         height: 2rem;
     }
 }
-.edit-form, .new-form {
+.edit-form, .new-form, .new-console-form, .new-studio-form {
     padding: 1rem;
     border-radius: 14px;
     border: solid var(--border-grey) 2px;
@@ -294,7 +294,7 @@ h2 {
         border-bottom: 2px solid var(--dark-highlight);
     }
 }
-.edit.form-row, .new.form-row {
+.edit.form-row, .new.form-row, .new-studio.form-row, .new-console.form-row {
         display: grid;
         grid-template-columns: repeat(2, 250px);
         gap: 1rem;
