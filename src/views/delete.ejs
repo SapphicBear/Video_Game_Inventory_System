@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs"); %>
+</head>
+<body>
+    <div class="wrapper delete">
+        <header>
+            <%- include("./partials/header.ejs"); %>
+        </header>
+        <main class="delete">
+            <h2>Delete items from the Database</h2>
+            <div class="item-area">
+            <section class="games">
+                <h3>Games</h3>
+                <ul class="game-list">
+                    <% games.map((game, i) => { %>
+                        <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
+                            <%= game.game_name %>
+                            <form action="/delete/<%= game.game_id%>" method="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                    <% }); %>
+                </ul>
+            </section>
+            <section class="studios">
+                <h3>Game studios</h3>
+                <ul class="studio-list">
+                    <% studios.map((studio, i) => { %>
+                        <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
+                            <%= studio.name %>
+                            <form action="/delete/<%= studio.studio_id%>" method="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                    <% }); %>
+                </ul>
+            </section>
+            <section class="consoles">
+                <h3>Game consoles</h3>
+                <ul class="console-list">
+                    <% consoles.map((console, i) => { %>
+                        <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
+                            <%= console.name %>
+                            <form action="/delete/<%= console.console_id%>" method="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                    <% }); %>
+                </ul>
+            </section>
+            </div>
+        </main>
+        <aside class="sidebar delete">
+            <div class="warning">
+                <h3>Warning!</h3>
+                <br>
+                <p>
+                    Please be sure that you know what you are doing! There is no retrieving the data that is lost when you delete it from the database!
+                </p>
+                <br>
+                <p>
+                    The browser will warn you before it submits the final deletion request. Please make sure you are fully aware of what you are deleting!
+                </p>
+                <br>
+                <p>
+                    Click the <strong>delete</strong> button next to the item in the database you wish to delete.
+                </p>
+            </div>
+            <div class="return">
+                <p>If you do not wish to delete anything, you can return to the main page here:</p>
+                <br>
+                <a href="/" class="button">Return home</a>
+            </div>
+        </aside>
+        <footer>
+            <%- include("./partials/footer.ejs", { links: links }); %>
+        </footer>
+    </div>
+</body>
+</html>

@@ -24,7 +24,6 @@ async function getFilterGenre(req, res) {
     res.render("index", { games: games, links: links, genres: genres, consoles: consoles, studios: studios });
 }
 async function getFilterStudios(req, res) {
-    console.log(req.query)
     const games = await db.filterByStudio(req.query);
     const genres = await db.getAllGenres();
     const consoles = await db.getAllConsoles();
