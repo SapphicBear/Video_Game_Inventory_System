@@ -2,7 +2,7 @@
     <div class="form-row">
         <label for="genre-select">Filter by Genre: </label>
         <select name="genres" id="genre-select">
-            <option value="">--Please choose an option--</option>
+            <option value="" disabled hidden selected>--Please choose an option--</option>
             <% genres.map((genre) => { %>
                 <option value="<%= genre.genre %>"><%= genre.genre %></option>
             <% }); %>
@@ -20,7 +20,7 @@
     <div class="form-row">
         <label for="consoles-select">Filter by Consoles: </label>
         <select name="consoles" id="consoles-select">
-            <option value="">--Please choose an option--</option>
+            <option value="" disabled hidden selected>--Please choose an option--</option>
             <% consoles.map((console) => { %>
                 <option value="<%= console.name %>"><%= console.name.replace("_", " "); %></option>
             <% }); %>
@@ -30,6 +30,25 @@
         <span>
         <input type="checkbox" id="inStock-consoles" name="inStock" value="In Stock">
         <label for="inStock-consoles">Only show In Stock</label>
+        </span>
+        <button type="submit">Search</button>
+        
+    </span>
+</form>
+<form action="/studios" method="GET">
+    <div class="form-row">
+        <label for="consoles-select">Filter by Studio: </label>
+        <select name="studios" id="studio-select">
+            <option value="" disabled hidden selected>--Please choose an option--</option>
+            <% studios.map((studio) => { %>
+                <option value="<%= studio.name %>"><%= studio.name.replace("_", " "); %></option>
+            <% }); %>
+        </select>
+    </div>
+    <span class="submit-area">
+        <span>
+        <input type="checkbox" id="inStock-studios" name="inStock" value="In Stock">
+        <label for="inStock-studios">Only show In Stock</label>
         </span>
         <button type="submit">Search</button>
         

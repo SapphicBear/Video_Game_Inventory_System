@@ -86,6 +86,32 @@ async function filterByGenre(genre) {
     }
 }
 
+async function filterByStudio(studio) {
+    console.log(studio.studios)
+    const query = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE '${studio.studios}' = game_studios.name
+    ORDER BY games.id;
+    `
+    const queryAlt = `
+    SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console AS console, games.id FROM games
+        JOIN game_studios
+        ON (games.studio_id = game_studios.studio_id)
+        WHERE '${studio.studios}' = game_studios.name AND in_stock != '0'
+    ORDER BY games.id;
+    `;
+    if (!studio.inStock) {
+        const { rows } = await pool.query(query);
+        return rows;
+    } else {
+        const { rows } = await pool.query(queryAlt);
+        return rows;
+    }
+    
+}
+
 async function getSelectedGame(game) {
     const query = `
     SELECT games.name AS game_name, game_studios.name AS studio_name, price, in_stock, genre, games.release_year, games.console, games.id FROM games
@@ -140,5 +166,6 @@ module.exports = {
     getSelectedGame,
     updateGameInfo,
     remainingConsoles,
-    postNewItem
+    postNewItem,
+    filterByStudio
 };
