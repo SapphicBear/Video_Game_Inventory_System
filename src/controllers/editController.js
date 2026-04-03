@@ -6,6 +6,9 @@ const links = require("./links");
 async function getEdit(req, res) {
     const game = await db.getSelectedGame(req.params);
     let temp = game[0].console[0];
+    if (!Array.isArray(temp)) {
+        temp = [temp];
+    }
     const consoles = await db.remainingConsoles(temp);
     res.render("edit", { links: links, game: game, errors: "", consoles: consoles });
 }

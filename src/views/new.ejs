@@ -14,19 +14,19 @@
                         <legend>Item information</legend>
                 <div class="new form-row">
                     <label for="name">Title: </label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" name="name" id="name" required>
                 </div>
                 <div class="new form-row">
                     <label for="genre">Genre: </label>
-                    <input type="text" name="genre" id="genre">
+                    <input type="text" name="genre" id="genre" required>
                 </div>
                 <div class="new form-row">
                     <label for="studio">Game Studio: </label>
-                    <input type="text" name="studio" id="studio">
+                    <input type="text" name="studio" id="studio" required>
                 </div>
                 <div class="new form-row">
                     <label for="release_year">Release year: </label>
-                    <input type="text" name="release_year" id="release_year">
+                    <input type="text" name="release_year" id="release_year" required>
                 </div>
                 </fieldset>
                 <fieldset>
@@ -46,15 +46,15 @@
                 </div>
                 <div class="new form-row">
                     <label for="in_stock">In Stock: </label>
-                    <input type="number" name="in_stock" id="in_stock" placeholder="0">
+                    <input type="number" name="in_stock" id="in_stock" placeholder="0" required>
                 </div>
                 <div class="new form-row">
                     <label for="price">Price: </label>
-                    <input type="tel" name="price" id="price" placeholder="0.00">
+                    <input type="tel" name="price" id="price" placeholder="0.00" required>
                 </div>
                 </fieldset>
                 <button type="submit">Submit</button>
-                <button type="button">Cancel</button>
+                <a class="button" href="/">Cancel</a>
             </form>
             <aside>
                 <ul>
