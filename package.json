@@ -8,7 +8,8 @@
     "dev": "nodemon src/app.js",
     "start": "node src/app.js",
     "database": "dotenv -- npm run _database",
-    "_database": "node ./db/populatedb.js $DATABASE_URL"
+    "_database": "node ./db/populatedb.js $DATABASE_URL",
+    "pub_database": "dotenv run -f .env.pub npm run _database"
   },
   "repository": {
     "type": "git",
