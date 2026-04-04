@@ -52,6 +52,8 @@ const postNew = [
         .withMessage("Price must be set."),
 
         async (req, res, next) => {
+            
+                const studios = await db.getAllStudios();
                 const errors = validationResult(req);
                 const consoles = await db.getAllConsoles();
                 const game = {
@@ -65,11 +67,13 @@ const postNew = [
                     price: req.body.price
                 };
                 if (!errors.isEmpty()) {
-                    res.render("edit", 
+                    res.render("new", 
                         { 
                             errors: errors.array(), 
                             links: links,
                             consoles: consoles,
+                            studios: studios,
+                            game: game,
                         });
                         return;
                 }

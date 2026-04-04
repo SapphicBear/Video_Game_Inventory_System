@@ -10,14 +10,20 @@
         </header>
         <main class="delete">
             <h2>Delete items from the Database</h2>
+            <span class="error">
+                <%= error ? error : "" %>
+            </span>
             <div class="item-area">
             <section class="games">
                 <h3>Games</h3>
                 <ul class="game-list">
                     <% games.map((game, i) => { %>
-                        <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
-                            <%= game.game_name %>
-                            <form action="/delete/<%= game.game_id%>" method="DELETE">
+                        <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>" name="">
+                            <p>
+                                    <%= game.game_name %>
+                                </p>
+                            <form action="/delete/game" method="post">
+                                <input type="hidden" name="game" value="<%= game.id %>">
                                 <button type="submit">Delete</button>
                             </form>
                         </li>
@@ -30,7 +36,8 @@
                     <% studios.map((studio, i) => { %>
                         <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
                             <%= studio.name %>
-                            <form action="/delete/<%= studio.studio_id%>" method="DELETE">
+                            <form action="/delete/studio" method="post">
+                                <input type="hidden" name="studio" value="<%= studio.studio_id %>">
                                 <button type="submit">Delete</button>
                             </form>
                         </li>
@@ -43,7 +50,8 @@
                     <% consoles.map((console, i) => { %>
                         <li class="<%= (i % 2 == 0 == true) ? "dark" : "light" %>">
                             <%= console.name %>
-                            <form action="/delete/<%= console.console_id%>" method="DELETE">
+                            <form action="/delete/console" method="post">
+                                <input type="hidden" name="console" value="<%= console.console_id %>">
                                 <button type="submit">Delete</button>
                             </form>
                         </li>

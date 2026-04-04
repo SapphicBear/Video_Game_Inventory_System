@@ -17,7 +17,7 @@ async function getAllConsoles() {
     return rows;
 }
 async function getAllStudios() {
-    const { rows } = await pool.query("SELECT name, year FROM game_studios;");
+    const { rows } = await pool.query("SELECT name, year, studio_id FROM game_studios;");
     return rows;
 }
 
@@ -172,11 +172,28 @@ async function postNewConsole(con) {
     `;
     await pool.query(query);
 }
-// get all items of one category
 
-// delete items (DELETE)
-
-// add items (POST)
+async function deleteGame(game) {
+    const query = `
+    DELETE FROM games WHERE games.id = '${game.game}';
+    `;
+    await pool.query(query);
+}
+async function deleteConsole(con) {
+    const query = `
+    DELETE FROM game_consoles WHERE console_id = '${con.console}';
+    `;
+    await pool.query(query);
+}
+async function deleteStudio(studio) {
+    
+        const query = `
+    DELETE FROM game_studios WHERE studio_id = '${studio.studio}';
+    `;
+    await pool.query(query);
+   
+    
+}
 
 module.exports = {
     getAllGames,
@@ -192,4 +209,7 @@ module.exports = {
     filterByStudio,
     postNewStudio,
     postNewConsole,
+    deleteGame,
+    deleteConsole,
+    deleteStudio
 };

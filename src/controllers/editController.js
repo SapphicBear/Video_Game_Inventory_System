@@ -32,7 +32,7 @@ const updateEdit = [
         .trim()
         .escape()
         .isNumeric()
-        .withMessage("Date must be a number")
+        .withMessage("Date must be a number.")
         .isLength({ min: 1 })
         .withMessage("Year must be specified."),
     body("console")
@@ -55,6 +55,7 @@ const updateEdit = [
         .withMessage("Price must be set."),
 
     async (req, res, next) => {
+        const studios = await db.getAllStudios();
         const consoles = await db.remainingConsoles(req.body.console);
         const errors = validationResult(req);
         const game = {
@@ -74,6 +75,7 @@ const updateEdit = [
                     links: links,
                     game: [game],
                     consoles: consoles,
+                    studios: studios
                 });
                 return;
         }

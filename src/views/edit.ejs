@@ -9,6 +9,13 @@
             <%- include("./partials/header.ejs"); %>
         </header>
         <main class="edit">
+            <% if (errors) { %>
+                <aside>
+                <% errors.map((error) => { %>
+                    <span class="error"><%= error.msg %></span>
+                <% }); %>
+                </aside>
+                <%}%>
             <form action="/edit" method="POST" class="edit-form">
                 <% game.map((data) => { %>
                     <fieldset>
@@ -78,15 +85,6 @@
                 <button type="submit">Submit Changes</button>
                 <a class="button" href="/">Cancel</a>
             </form>
-            <aside>
-            <ul>
-                <% if (errors) { %>
-            <% errors.map((error) => { %>
-                <li><%= error.msg %></li>
-            <% }); %>
-            <%}%>
-            </ul>
-        </aside>
         </main>
         
         <footer>

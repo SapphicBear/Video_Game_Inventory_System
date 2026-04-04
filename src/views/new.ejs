@@ -9,20 +9,27 @@
             <%- include("./partials/header.ejs"); %>
         </header>
         <main class="new">
+            <% if (errors) { %>
+                <aside>
+                <% errors.map((error) => { %>
+                    <span class="error"><%= error.msg %></span>
+                <% }); %>
+                </aside>
+                <%}%>
             <form action="/new" method="POST" class="new-form">
                 <fieldset>
                         <legend>Item information</legend>
                 <div class="new form-row">
-                    <label for="name">Title: </label>
-                    <input type="text" name="name" id="name" required>
+                    <label for="game_name">Title: </label>
+                    <input type="text" name="game_name" id="game_name" required>
                 </div>
                 <div class="new form-row">
                     <label for="genre">Genre: </label>
                     <input type="text" name="genre" id="genre" required>
                 </div>
                 <div class="new form-row">
-                    <label for="studio">Game Studio: </label>
-                    <select name="studio" id="studio">
+                    <label for="studio_name">Game Studio: </label>
+                    <select name="studio_name" id="studio_name">
                         <option value="" selected disabled hidden>Select a Studio</option>
                         <% studios.map((studio) => { %>
                             <option value="<%= studio.name %>"><%= studio.name %></option>
@@ -57,16 +64,7 @@
                 </fieldset>
                 <button type="submit">Submit</button>
                 <a class="button" href="/">Cancel</a>
-            </form>
-            <aside>
-                <ul>
-                    <% if (errors) { %>
-                <% errors.map((error) => { %>
-                    <li><%= error.msg %></li>
-                <% }); %>
-                <%}%>
-                </ul>
-        </aside>
+            </form>     
         </main>
         
         <footer>
