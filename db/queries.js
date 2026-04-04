@@ -151,6 +151,27 @@ async function postNewItem(item) {
     await pool.query(query);
 }
 
+async function postNewStudio(studio) {
+    const query = `
+    INSERT INTO game_studios (name, year) 
+        VALUES (
+            '${studio.name}',
+            '${studio.year}'
+        );
+    `;
+    await pool.query(query);
+}
+
+async function postNewConsole(con) {
+    const query = `
+    INSERT INTO game_consoles (name, release_year)
+        VALUES (
+            '${con.name}', 
+            '${con.release_year}'
+        );
+    `;
+    await pool.query(query);
+}
 // get all items of one category
 
 // delete items (DELETE)
@@ -168,5 +189,7 @@ module.exports = {
     updateGameInfo,
     remainingConsoles,
     postNewItem,
-    filterByStudio
+    filterByStudio,
+    postNewStudio,
+    postNewConsole,
 };
