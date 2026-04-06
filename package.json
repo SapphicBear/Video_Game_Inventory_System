@@ -1,5 +1,5 @@
 {
-  "name": "game_inventory_system",
+  "name": "video_game_inventory_system",
   "version": "1.0.0",
   "description": "This is a simple example of an inventory system using express and postgresql. Made as a part of the odin project's Node.js course!",
   "main": "app.js",
@@ -13,16 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SapphicBear/game_inventory_system.git"
+    "url": "git+https://github.com/SapphicBear/Video_Game_Inventory_System.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/SapphicBear/game_inventory_system/issues"
+    "url": "https://github.com/SapphicBear/Video_Game_Inventory_System/issues"
   },
-  "homepage": "https://github.com/SapphicBear/game_inventory_system#readme",
+  "homepage": "https://github.com/SapphicBear/Video_Game_Inventory_System#readme",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.57.2",
     "ejs": "^5.0.1",
