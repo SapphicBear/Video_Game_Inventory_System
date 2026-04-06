@@ -5,7 +5,7 @@ const links = require("./links");
 async function getNew(req, res) {
     const consoles = await db.getAllConsoles();
     const studios = await db.getAllStudios();
-    res.render("new", { links: links, consoles: consoles, errors: "" , studios: studios});
+    res.render("new", { links: links, consoles: consoles, errors: "" , studios: studios, game: ""});
 }
 const postNew = [
     body("game_name")
