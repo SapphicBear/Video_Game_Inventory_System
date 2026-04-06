@@ -19,11 +19,11 @@
             <form action="/new-console" method="POST" class="new-console-form">
                 <div class="new-console form-row">
                     <label for="name">Console Name: </label>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="name" id="name" required value="<%= console ? console.name : ""%>">
                 </div>
                 <div class="new-console form-row">
                     <label for="release_year">Release year: </label>
-                    <input type="tel" id="release_year" name="release_year" required>
+                    <input type="tel" id="release_year" name="release_year" required value="<%=console ? console.release_year : "" %>">
                 </div>
 
                 <button type="submit">Submit</button>

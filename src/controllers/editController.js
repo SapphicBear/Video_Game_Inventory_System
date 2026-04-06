@@ -1,5 +1,5 @@
 const db = require("./../../db/queries");
-const { body, validationResult } = require("express-validator");
+const { body, validationResult, matchedData } = require("express-validator");
 const links = require("./links");
 
 
@@ -79,7 +79,9 @@ const updateEdit = [
                 });
                 return;
         }
-        await db.updateGameInfo(game);
+        const data = matchedData(req);
+        data.id = req.body.id;
+        await db.updateGameInfo(data);
         res.redirect("/");
     },
 ];

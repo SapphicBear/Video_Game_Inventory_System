@@ -127,8 +127,8 @@ async function getSelectedGame(game) {
 async function updateGameInfo(info) {
     const query = `
     UPDATE games 
-    SET name = '${info.game_name}', genre = '${info.genre}', studio_id = (SELECT studio_id FROM game_studios
-                WHERE game_studios.name = '${info.studio_name}'), release_year = '${info.release_year}', in_stock = '${info.in_stock}', price = '${info.price}', console = '{{${info.console}}}'
+    SET name = '${info.name}', genre = '${info.genre}', studio_id = (SELECT studio_id FROM game_studios
+                WHERE game_studios.name = '${info.studio}'), release_year = '${info.release_year}', in_stock = '${info.in_stock}', price = '${info.price}', console = '{{${info.console}}}'
         WHERE id = ${info.id};
     `;
     await pool.query(query);

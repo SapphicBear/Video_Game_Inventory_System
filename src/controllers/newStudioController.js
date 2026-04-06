@@ -3,7 +3,7 @@ const { body, validationResult } = require("express-validator");
 const links = require("./links");
 
 async function getNewStudio(req, res) {
-    res.render("new-studio", { links: links, errors: "" });
+    res.render("new-studio", { links: links, errors: "", studio: "" });
 }
 
 const postNewStudio = [
@@ -30,6 +30,7 @@ const postNewStudio = [
                 {
                     errors: errors.array(),
                     links: links,
+                    studio: studio,
                 });
         } else {
             await db.postNewStudio(studio);

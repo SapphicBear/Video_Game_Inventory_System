@@ -1,5 +1,5 @@
 const db = require("./../../db/queries");
-const { body, validationResult } = require("express-validator");
+const { body, validationResult, matchedData } = require("express-validator");
 const links = require("./links");
 
 async function getNew(req, res) {
@@ -64,7 +64,6 @@ const postNew = [
                     in_stock: req.body.in_stock,
                     price: req.body.price
                     };
-            console.log(game);
                 if (!errors.isEmpty()) {
                     res.render("new", 
                         { 
@@ -75,7 +74,8 @@ const postNew = [
                             game: game,
                         });
                 } else {
-                    await db.postNewItem(game);
+                    const data = matchedData(req);
+                    await db.postNewItem(data);
                     res.redirect("/");
                 }
             },

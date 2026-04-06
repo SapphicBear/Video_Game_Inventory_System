@@ -1,9 +1,9 @@
 const db = require("./../../db/queries");
-const { body, validationResult } = require("express-validator");
+const { body, validationResult, matchedData } = require("express-validator");
 const links = require("./links");
 
 async function getNewConsole(req, res) {
-    res.render("new-console", { links: links, errors: "" });
+    res.render("new-console", { links: links, errors: "", console: "" });
 }
 const postNewConsole = [
 
@@ -26,14 +26,17 @@ const postNewConsole = [
             name: req.body.name,
             release_year: req.body.release_year,
         };
+        
         if (!errors.isEmpty()) {
             res.render("new-console", 
                 {
                     errors: errors.array(),
                     links: links,
+                    console: con,
                 });
         } else {
-            await db.postNewConsole(con);
+            const data = matchedData(req);
+            await db.postNewConsole(data);
             res.redirect("/");
         }
         

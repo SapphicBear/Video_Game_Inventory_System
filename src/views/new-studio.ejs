@@ -21,11 +21,11 @@
             <form action="/new-studio" method="POST" class="new-studio-form">
                 <div class="new-studio form-row">
                     <label for="name">Studio Name: </label>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="name" id="name" required value="<%= studio ? studio.name : "" %>">
                 </div>
                 <div class="new-studio form-row">
                     <label for="year">Grounding year: </label>
-                    <input type="tel" name="year" id="year" required>
+                    <input type="tel" name="year" id="year" required value="<%= studio ? studio.year : "" %>">
                 </div>
                 <button type="submit">Submit</button>
                 <a class="button" href="/">Cancel</a>
