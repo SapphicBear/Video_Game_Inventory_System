@@ -22,6 +22,14 @@ app.use("/new-studio", newStudioRouter);
 app.use("/new-console", newConsoleRouter);
 app.use("/delete", deleteRouter);
 
+app.use((req, res, next) => {
+    res.status(404).send("<p>404 page not found! Sorry!</p><a href='/'>Return</a>");
+});
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(err.statusCode || 500).send(err.message);
+});
+
 app.listen(PORT, (error) => {
     if (error) {
         throw error;
